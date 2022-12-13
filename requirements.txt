@@ -1,7 +1,6 @@
 torch
 numpy
 pydub
-io
 SpeechRecognition
 omegaconf
 pyaudio

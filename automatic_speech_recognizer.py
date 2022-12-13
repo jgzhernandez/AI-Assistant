@@ -3,7 +3,7 @@ from pydub import AudioSegment
 from io import BytesIO
 import speech_recognition as sr
 
-DEVICE = torch.device('gpu' if torch.cuda.is_available() else 'cpu')
+DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 MODEL, DECODER, UTILS = torch.hub.load(repo_or_dir='snakers4/silero-models',
                                        model='silero_stt', language='en', device=DEVICE)
 
