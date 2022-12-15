@@ -1,11 +1,7 @@
 import torch
-from pydub import AudioSegment
-from io import BytesIO
 import speech_recognition as sr
 
-DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-MODEL, DECODER, UTILS = torch.hub.load(repo_or_dir='snakers4/silero-models',
-                                       model='silero_stt', language='en', device=DEVICE)
+DEVICE = torch.device('gpu' if torch.cuda.is_available() else 'cpu')
 
 
 class AutomaticSpeechRecognizer:
@@ -21,10 +17,9 @@ class AutomaticSpeechRecognizer:
             print("Listening")
             while self.is_on:
                 audio = self.recognizer.listen(source)
-                audio = BytesIO(audio.get_wav_data())
-                audio = AudioSegment.from_file(audio, format="wav")
-                input_tensor = torch.FloatTensor(audio.get_array_of_samples()).view(1, -1)
-                input_tensor = input_tensor.to(DEVICE)
-                output_tensor = MODEL(input_tensor)
-                transcription = DECODER(output_tensor[0])
-                print(transcription)
+                try:
+                    transcription = self.recognizer.recognize_google(audio)
+                    print(transcription)
+                except sr.UnknownValueError:
+                    pass
+
