@@ -5,3 +5,4 @@ SpeechRecognition
 omegaconf
 pyaudio
 soundfile
+openai
