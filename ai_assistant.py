@@ -48,12 +48,12 @@ class Assistant:
                 try:
                     transcription = self.recognizer.recognize_google(audio)
                     if len(transcription):
-                        if transcription == "stop":
+                        if transcription in ("stop", "exit", "quit"):
                             self.is_on = False
-                            self.TTS("I will stop now.")
-                            continue
+                            self.TTS(f"I will {transcription} now.")
+                            exit()
                         self.chatbot(transcription)
-                        self.TTS(CHATBOT_RESPONSES[-1])
+                        self.TTS(CHATBOT_RESPONSES[-1].strip())
                         CHATBOT_RESPONSES.pop(-1)
                         print("Listening...")
                 except sr.UnknownValueError:
