@@ -42,8 +42,8 @@ class Assistant:
     def voice_recognize(self):
         with sr.Microphone(sample_rate=16000) as source:
             self.recognizer.adjust_for_ambient_noise(source)
+            print("Listening...")
             while self.is_on:
-                print("Listening...")
                 audio = self.recognizer.listen(source)
                 try:
                     transcription = self.recognizer.recognize_google(audio)
@@ -55,5 +55,6 @@ class Assistant:
                         self.chatbot(transcription)
                         self.TTS(CHATBOT_RESPONSES[-1])
                         CHATBOT_RESPONSES.pop(-1)
+                        print("Listening...")
                 except sr.UnknownValueError:
                     pass
