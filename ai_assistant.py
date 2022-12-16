@@ -8,7 +8,7 @@ from gtts import gTTS
 import sounddevice as sd
 import soundfile as sf
 
-openai.api_key = "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"
+openai.api_key = "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"
 DEVICE = torch.device('gpu' if torch.cuda.is_available() else 'cpu')
 CHATBOT_RESPONSES = []
 
