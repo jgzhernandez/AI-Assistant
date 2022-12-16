@@ -20,6 +20,7 @@ class Assistant:
         self.voice_recognize()
 
     def TTS(self, text_response):
+        print(text_response)
         audio = gTTS(text=text_response, lang="en", slow=False)
         audio.save("audio.wav")
         # print("Playing audio file")
@@ -49,11 +50,9 @@ class Assistant:
                     if len(transcription):
                         if transcription == "stop":
                             self.is_on = False
-                            print("I will stop now.")
                             self.TTS("I will stop now.")
                             continue
                         self.chatbot(transcription)
-                        print(CHATBOT_RESPONSES[-1])
                         self.TTS(CHATBOT_RESPONSES[-1])
                         CHATBOT_RESPONSES.pop(-1)
                 except sr.UnknownValueError:
