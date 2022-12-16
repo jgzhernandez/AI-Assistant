@@ -6,3 +6,8 @@ omegaconf
 pyaudio
 soundfile
 openai
+
+gtts
+
+sounddevice
+soundfile

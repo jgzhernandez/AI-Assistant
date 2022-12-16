@@ -1,3 +1,5 @@
-import automatic_speech_recognizer as asr
+from ai_assistant import Assistant
+
 if __name__ == "__main__":
-    asr.AutomaticSpeechRecognizer()
+    assistant = Assistant()
+    assistant.voice_recognize()
