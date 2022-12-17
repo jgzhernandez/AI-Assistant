@@ -1,0 +1,2 @@
+from automatic_speech_recognizer import AutomaticSpeechRecognizer
+AutomaticSpeechRecognizer()
