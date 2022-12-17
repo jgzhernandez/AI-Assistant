@@ -1,6 +1,7 @@
 import torch
 import speech_recognition as sr
 import openai
+import os
 from gtts import gTTS
 import sounddevice as sd
 import soundfile as sf
@@ -46,6 +47,7 @@ class Assistant:
         data, fs = sf.read("audio.wav", dtype='float32')
         sd.play(data, fs)
         sd.wait()  # Wait until file is done playing
+        os.remove("audio.wav")
 
     def voice_recognize(self):
         with sr.Microphone(sample_rate=16000) as source:
@@ -55,12 +57,12 @@ class Assistant:
                 try:
                     transcription = self.recognizer.recognize_google(audio)
                     transcription = transcription.lower()
-                    if transcription == "hey mom":
+                    if transcription in ["hey mom", "hi mom", "hello mom"]:
                         self.is_listening = True
-                    elif transcription == "thank you mom":
+                    elif transcription in ["thank you mom", "thanks mom"]:
                         self.is_listening = False
                         self.is_on = True
-                    elif transcription == "goodbye mom":
+                    elif transcription in ["goodbye mom", "bye mom"]:
                         self.is_closing = True
                         self.is_on = False
                     elif self.is_listening and transcription:
