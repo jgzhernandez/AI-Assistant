@@ -10,7 +10,7 @@ Once started, Mombot always listens using VAD to know when you are talking speci
 The VAD model is implemented using Silero VAD.
 It is a pre-trained VAD model available on Github through the link: [https://github.com/snakers4/silero-vad](https://github.com/snakers4/silero-vad).
 It detects voice activity to activate the ASR.
-The wake word for Mombot is "Hello Mommy".
+The wake word for Mombot is "Hey Mom!".
 
 The ASR Module is implemented using the [Speech Recognition API on PyPI](https://pypi.org/project/SpeechRecognition/) which is imported as speech_recognition.
 This listens to the user after hearing the wake word and transcribes what was said before sending it to the Chatbot LLM. 
@@ -20,9 +20,9 @@ The Chatbot needs an API key from OpenAI, since the API is not that open or acce
 If the credits of the key has expired or is detected to be made public, a new key needs to be used. 
 
 When an answer has been provided, [Google's Text-to-Speech module](https://pypi.org/project/gTTS/) is used for Mombot to say the answer out loud.
-Mombot can be deactivated when you say "Goodbye Mommy!"
 
 ## How to Use
+
 **The LLM requires an OpenAI API Key.
 Please visit https://beta.openai.com/account/api-keys to get one.**
 
@@ -36,4 +36,5 @@ python -m Mombot
 Mombot will then pop up and wait for you to say "Hello Mommy".
 Mombot will also let you know when you are being listened to.
 During this time, you can ask your question.
-You can also say "Goodbye Mommy!" to end your session with Mombot.
+Mombot will stop listening and remain idle when you say the phrase "Thank you, Mom!" 
+Mombot can be deactivated when you say "Goodbye Mom!"

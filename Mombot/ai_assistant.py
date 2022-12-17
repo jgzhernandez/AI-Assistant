@@ -55,9 +55,12 @@ class Assistant:
                 try:
                     transcription = self.recognizer.recognize_google(audio)
                     transcription = transcription.lower()
-                    if transcription == "hello mommy":
+                    if transcription == "hey mom":
                         self.is_listening = True
-                    elif transcription == "goodbye mommy":
+                    elif transcription == "thank you mom":
+                        self.is_listening = False
+                        self.is_on = True
+                    elif transcription == "goodbye mom":
                         self.is_closing = True
                         self.is_on = False
                     elif self.is_listening and transcription:
