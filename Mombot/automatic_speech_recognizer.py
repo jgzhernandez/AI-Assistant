@@ -1,8 +1,7 @@
 import torch
 import speech_recognition as sr
 
-DEVICE = torch.device('gpu' if torch.cuda.is_available() else 'cpu')
-
+DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 class AutomaticSpeechRecognizer:
 
@@ -22,6 +21,3 @@ class AutomaticSpeechRecognizer:
                     print(transcription)
                 except sr.UnknownValueError:
                     pass
-                if transcription == "stop mommy":
-                    break
-
