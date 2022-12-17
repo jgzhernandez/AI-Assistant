@@ -38,7 +38,6 @@ class Assistant:
         CHATBOT_RESPONSES.append(response.choices[0].text)
 
     def tts(self, text):
-        print(text)
         audio = gTTS(text=text, lang="en", slow=False)
         audio.save("audio.wav")
         # print("Playing audio file")
