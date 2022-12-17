@@ -5,4 +5,5 @@ SpeechRecognition
 omegaconf
 pyaudio
 soundfile
-openai
+playsound
+transformers
