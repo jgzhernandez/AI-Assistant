@@ -22,4 +22,6 @@ class AutomaticSpeechRecognizer:
                     print(transcription)
                 except sr.UnknownValueError:
                     pass
+                if transcription == "stop mommy":
+                    break
 
