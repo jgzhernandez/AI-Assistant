@@ -24,6 +24,7 @@ root.geometry('%dx%d+%d+%d' % (width, height, x, y))
 
 # Create a frame if user has no api key.
 def no_api_frame():
+    
     # Delete all elements if the app started from the default frame
     for slave in root.grid_slaves():
         slave.destroy()
@@ -32,6 +33,8 @@ def no_api_frame():
         api_dict = {"api_key": api_key_entry.get()}
         with open('api.json', 'w') as api_file:
             json.dump(api_dict, api_file)
+        
+        # Test if the api is valid, if not ask for another one.
         try:
             with open('api.json') as api:
                 key = json.load(api)
@@ -46,7 +49,8 @@ def no_api_frame():
     # Create Title
     title = Label(text="🤖MOMBOT🤖", background="black", foreground="white", font="Courier 40 bold")
     title.grid(row=0, column=0, columnspan=3, padx=10, pady=(10, 100), sticky="NEW")
-    # Create a label
+    
+    # Create a label for API KEY
     api_key = Label(text="API Key", background="black", foreground="white", font="Courier 20 bold")
     api_key.grid(row=1, column=1, columnspan=1, padx=10, pady=10, sticky="NSEW")
 
@@ -84,7 +88,7 @@ def default_frame():
     root.grid_columnconfigure(1, weight=1)
     root.grid_columnconfigure(2, weight=1)
 
-    # Run a thread to start the assistant
+    # Create a thread to start the assistant
     def start_assistant():
         assistant.is_on = True
         assistant.voice_recognize()
@@ -107,14 +111,13 @@ def default_frame():
         # Exit the app after the sleep word
         os._exit(0)
 
-    # Test if api key is valid
-
+    # Run the threads
     assistant_thread = threading.Thread(target=start_assistant)
     assistant_thread.start()
     dynamic_ui_thread = threading.Thread(target=dynamic_ui)
     dynamic_ui_thread.start()
 
-
+# Check if user has an API key file then load the appropriate frame.
 try:
     with open('api.json') as api:
         default_frame()
