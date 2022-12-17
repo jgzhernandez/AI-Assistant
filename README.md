@@ -30,8 +30,8 @@ To use Mombot, input the following commands in your terminal:
 ```
 git clone https://github.com/jgzhernandez/AI-Assistant
 cd AI-Assistant
-pip install -r requirements.txt
-python -m Mombot
+pip3 install -r requirements.txt
+python3 assistant.py
 ```
 Mombot will then pop up and wait for you to say "Hello Mommy".
 Mombot will also let you know when you are being listened to.

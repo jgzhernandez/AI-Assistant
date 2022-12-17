@@ -4,11 +4,9 @@ pydub
 SpeechRecognition
 omegaconf
 pyaudio
+sounddevice
 soundfile
-<<<<<<< HEAD
 openai
 gtts
-=======
 playsound
 transformers
->>>>>>> 4e42d93704631f633abb8274ab5c2fe9ebf3d9e3
