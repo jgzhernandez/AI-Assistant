@@ -7,13 +7,9 @@ Mombot is an AI Voice Assistant with four different stages of operation: Voice A
 ## Implementation
 
 Once started, Mombot always listens using VAD to know when you are talking specifically to Mombot.
-The VAD model is implemented using Silero VAD.
-It is a pre-trained VAD model available on Github through the link: [https://github.com/snakers4/silero-vad](https://github.com/snakers4/silero-vad).
-It detects voice activity to activate the ASR.
-The wake word for Mombot is "Hey Mom!".
 
-The ASR Module is implemented using the [Speech Recognition API on PyPI](https://pypi.org/project/SpeechRecognition/) which is imported as speech_recognition.
-This listens to the user after hearing the wake word and transcribes what was said before sending it to the Chatbot LLM. 
+In this implementation, the VAD and ASR is packaged into one using Python [SpeechRecognition](https://pypi.org/project/SpeechRecognition/) on PyPI.
+[`Recognizer.adjust_for_ambient_noise(source)`](https://github.com/Uberi/speech_recognition/blob/master/reference/library-reference.rst#recognizer_instanceadjust_for_ambient_noisesource-audiosource-duration-float--1---none) is what handles VAD, and ASR is done using [Google Speech Recognition](https://github.com/Uberi/speech_recognition/blob/master/reference/library-reference.rst#recognizer_instancerecognize_googleaudio_data-audiodata-key-unionstr-none--none-language-str--en-us--pfilter-union0-1-show_all-bool--false---unionstr-dictstr-any).
 
 The LLM used is [OpenAI's cutting-edge GPT-3](https://beta.openai.com/docs/models/gpt-3) model `text-davinci-003` through OpenAI's API.
 The Chatbot needs an API key from OpenAI, since the API is not that open or accessible.
