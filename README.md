@@ -4,6 +4,8 @@ Remember when you used to ask your mom things and she would answer your every bu
 
 Mombot is an AI Voice Assistant with four different stages of operation: Voice Activity Detection (VAD), Automatic Speech Recognition (ASR), Large Language Model (LLM), and Text-to-Speech (TTS).
 
+## Implementation
+
 Once started, Mombot always listens using VAD to know when you are talking specifically to Mombot.
 The VAD model is implemented using Silero VAD.
 It is a pre-trained VAD model available on Github through the link: [https://github.com/snakers4/silero-vad](https://github.com/snakers4/silero-vad).
@@ -19,3 +21,19 @@ If the credits of the key has expired or is detected to be made public, a new ke
 
 When an answer has been provided, [Google's Text-to-Speech module](https://pypi.org/project/gTTS/) is used for Mombot to say the answer out loud.
 Mombot can be deactivated when you say "Goodbye Mommy!"
+
+## How to Use
+**The LLM requires an OpenAI API Key.
+Please visit https://beta.openai.com/account/api-keys to get one.**
+
+To use Mombot, input the following commands in your terminal:
+```
+git clone https://github.com/jgzhernandez/AI-Assistant
+cd AI-Assistant
+pip install -r requirements.txt
+python -m Mombot
+```
+Mombot will then pop up and wait for you to say "Hello Mommy".
+Mombot will also let you know when you are being listened to.
+During this time, you can ask your question.
+You can also say "Goodbye Mommy!" to end your session with Mombot.

@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from ai_assistant import Assistant
+from Mombot.ai_assistant import Assistant
 import threading
 import os
 import json
