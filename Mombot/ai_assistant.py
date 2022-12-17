@@ -13,9 +13,12 @@ CHATBOT_RESPONSES = []
 
 class Assistant:
     
-    with open('api.json') as api:
-        api_key = json.load(api)
-        openai.api_key = api_key['api_key']
+    try:
+        with open('api.json') as api:
+            api_key = json.load(api)
+            openai.api_key = api_key['api_key']
+    except FileNotFoundError:
+        pass
 
     def __init__(self):
 
