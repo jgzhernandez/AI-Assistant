@@ -5,7 +5,6 @@ import threading
 import os
 import json
 import openai
-import time
 
 # Creata a UI using tkinter
 root = Tk()
